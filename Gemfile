@@ -11,5 +11,6 @@ gem 'activerecord', :require => "active_record"
 gem 'rake'
 gem 'pry'
 gem 'sinatra-activerecord'
+gem 'require_all'
 gem 'shotgun'
 
