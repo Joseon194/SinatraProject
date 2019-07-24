@@ -16,5 +16,10 @@ helpers do
     def login(email)
       session[:email] = param[:email]
     end
+
+    def logout
+      session.clear
+    end
+
   end
 end
