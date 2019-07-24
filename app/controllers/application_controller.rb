@@ -14,12 +14,11 @@ helpers do
     end
 
     def login(email)
-      session[:email] = param[:email]
+      session[:email] = email
     end
 
-    def logout
+    def logout!
       session.clear
     end
-
   end
 end
