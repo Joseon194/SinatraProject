@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   get '/posts' do
-    "You are logged in as #{session[:email]}"
+    "These are publically available posts!"
   end
 
   get '/posts/new' do
@@ -11,4 +11,11 @@ class PostsController < ApplicationController
       "A new post form"
     end
 end
+
+  get '/posts/:id/edit' do
+    if !session[:email]
+      redirect "/login"
+    else
+      "An edit post form"
+    end
 end
