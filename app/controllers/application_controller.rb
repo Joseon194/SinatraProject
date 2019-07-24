@@ -8,6 +8,10 @@ class ApplicationController < Sinatra::Base
   end
 
     get '/' do
+      session[:greeting] = "Hello World"
       "Hello World!"
     end
+
+    get '/remember' do
+      session[:greeting]
 end
