@@ -50,6 +50,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord
   pry
+  rack
   rake
   require_all
   shotgun
