@@ -9,7 +9,7 @@ class ApplicationController < Sinatra::Base
 
     get '/' do
       session[:greeting] = "Hello World"
-      cookie[:a_dangerous_value] = "You have $100 in credit!"
+      cookies[:a_dangerous_value] = "You have $100 in credit!"
       "Hello World!"
     end
 
