@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
 get '/signup' do
-  erb :"users/new"
+  erb :"users/new.html"
 end
 
 
-post '/users' do |variable|
+post '/users' do
   @user = User.new
   @user.email = params[:email]
   @user.password = params[:password]
