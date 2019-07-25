@@ -14,7 +14,8 @@ helpers do
     end
 
     def login(email, password)
-      if user = User.find_by(:email => email) && user.authenticate (password)
+      user = User.find_by(:email => email)
+      if user && user.authenticate(password)
       session[:email] = email
     else
       redirect '/login'
