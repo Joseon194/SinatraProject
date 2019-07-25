@@ -19,6 +19,7 @@ helpers do
     else
       redirect '/login'
     end
+  end
 
     def logout!
       session.clear
