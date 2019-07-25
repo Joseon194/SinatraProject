@@ -14,7 +14,10 @@ helpers do
     end
 
     def login(email)
+      if user = User.find_by(:email => email)
       session[:email] = email
+    else
+      redirect '/login'
     end
 
     def logout!
