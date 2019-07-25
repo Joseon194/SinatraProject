@@ -17,8 +17,11 @@ end
       redirect "/login"
     else
       post = Post.find(params[:id])
-    else
+      if post.user_id == current_user.id
       "An edit post form #{current_user.id} is editing #{post.id}"
+    else
+      redirect '/post'
+    end
       end
     end
   end
