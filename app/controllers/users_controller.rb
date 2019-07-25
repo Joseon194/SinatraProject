@@ -11,7 +11,7 @@ post '/users' do |variable|
   if @user.save
     redirect '/login'
   else
-    erb :"users/new"
+    erb :"users/new.html"
   end
 end
 end
