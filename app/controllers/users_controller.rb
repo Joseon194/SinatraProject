@@ -1,29 +1,59 @@
 class UsersController < ApplicationController
 
-get '/signup' do
-  erb :"users/new.html"
-end
 
-get '/login' do
-erb :"sessions/login.html"
-end
+  require 'pry'
+  class UsersController < ApplicationController
 
-get '/home' do
-       if Helpers.is_signed_in?(session)
-           erb :'/users/home'
-       else
-           redirect to '/signin'
-       end
-   end
+      get '/signup' do
+          if Helpers.is_signed_in?(session)
+              redirect to '/home'
+          else
+              erb :'/users/signup'
+          end
+      end
 
-post '/users' do
-  @user = User.new
-  @user.email = params[:email]
-  @user.password = params[:password]
-  if @user.save
-    redirect '/login'
-  else
-    erb :"users/new.html"
+      post '/signup' do
+          if !(params.has_value?(""))
+              user = User.create(params)
+              session["user_id"] = user.id
+              redirect to '/home'
+          else
+              redirect to '/signup'
+          end
+      end
+
+      get '/signin' do
+          if Helpers.is_signed_in?(session)
+              redirect to '/home'
+          else
+              erb :'/users/signin'
+          end
+      end
+
+      post '/signin' do
+          user = User.find_by(email: params[:email])
+          if user && user.authenticate(params[:password])
+              session[:user_id] = user.id
+              redirect to '/home'
+          else
+              redirect to '/signin'
+          end
+      end
+
+      get '/home' do
+          if Helpers.is_signed_in?(session)
+              erb :'/users/home'
+          else
+              redirect to '/signin'
+          end
+      end
+
+      post '/signout' do
+          if Helpers.is_signed_in?(session)
+              session.clear
+              redirect to '/signin'
+          else
+              redirect to '/'
+          end
+      end
   end
-end
-end
