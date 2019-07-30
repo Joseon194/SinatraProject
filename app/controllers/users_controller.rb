@@ -18,7 +18,7 @@ class UsersController < ApplicationController
           end
       end
 
-      get '/login' do
+      get '/signin' do
           if Helpers.is_signed_in?(session)
               redirect to '/home'
           else
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
       post '/signin' do
           user = User.find_by(email: params[:email])
           if user && user.authenticate(params[:password])
-              session[:user_id] = user.id
+              session[:email] = user.email
               redirect to '/home'
           else
               redirect to '/signin'
