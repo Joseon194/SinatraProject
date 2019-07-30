@@ -1,9 +1,5 @@
 class UsersController < ApplicationController
 
-
-  require 'pry'
-  class UsersController < ApplicationController
-
       get '/signup' do
           if Helpers.is_signed_in?(session)
               redirect to '/home'
@@ -22,7 +18,7 @@ class UsersController < ApplicationController
           end
       end
 
-      get '/signin' do
+      get '/login' do
           if Helpers.is_signed_in?(session)
               redirect to '/home'
           else
@@ -57,4 +53,3 @@ class UsersController < ApplicationController
           end
       end
     end
-end
