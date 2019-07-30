@@ -1,4 +1,4 @@
-<h1>Welcome, <%= Helpers.current_user(session).username%>!</h1>
+<h1>Welcome, <%= Helpers.current_user(session).email%>!</h1>
 <br>
 <h2>Submit a new car!</h2>
     <form action="/rocks/new" method="post">
